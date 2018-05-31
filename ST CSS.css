@@ -140,10 +140,13 @@ div{
 }
 
 .column {
-	text-align: center;
     flex: 50%;
 }
 
+.column3 {
+	text-align: center;
+    flex: 50%;
+}
 .footer{
 	font-size:16px;
 	color:#303030;
