@@ -1,0 +1,36 @@
+/* --Style-- */
+h1{
+    font-family: 'Josefin Sans', sans-serif;
+	font-size: 36px;
+}
+
+h2{
+    font-family: 'Work Sans', sans-serif;
+	font-size: 24px;
+}
+/* --Structure & Spacing-- */
+div{
+	width: 80%;
+	margin: auto;
+}
+.row {
+	width:100%;
+    display: flex;
+}
+.row div {
+    width:100%;
+}
+.column {
+    flex: 50%;
+}
+.column .header {
+    background-color:#d3d3d3;
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.column .content {
+    display: none;
+    padding : 5px;
+}
+
