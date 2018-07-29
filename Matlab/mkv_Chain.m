@@ -4,29 +4,41 @@ clear all; close all; clc;
 P = [0.98 0.1 0.00;
      0.02 0.7 0.05;
      0.00 0.2 0.95];
-[V, D] = eig(P);
-V1 = V(:,3);
-V1 = V1/sum(V1);
-moves = 350;
+ 
+%Find steady state of transition matrix
+initPow = 1;
+steady = ones(1,length(P));
+while steady > 10^(-6)
+    steady = sum(abs(P^initPow - P^(initPow+1)));
+    initPow = initPow+1;
+end
+steadyState = P^initPow;
+
+%Determine number of transitions and number of trials
+moves = initPow;
 sampleNum = 10000;
 
-hist = zeros(moves, 1);
-all = zeros(moves, sampleNum);
-
 %Generic way to determine number of states and select initial state.
-states = linspace(1,length(P(:,1)), length(P(:,1)));
+states = linspace(1,length(P), length(P));
 state = randi(length(states));
 
-%Generates a matrix of samples
+%Generates a matrix of markov chain samples
 for j=1:sampleNum
     for i = 1:moves
-        hist(i) = state;
+        chain(i) = state;
         state = moveState(state, P);
     end
-    all(:,j) = hist;
+    trials(:,j) = chain;
 end 
 
-test = all(moves,:);
+%Determine the eigenvectors and eigenvalues
+[V, D] = eig(P);
+[dom, ind] = max(abs(diag(D)));
+V1 = V(:,ind);
+V1 = V1/sum(V1);
+
+%Capture endstate of all the trials
+test = trials(moves,:);
 
 %Determine frequency of particular states
 [freq, total] = freqCount(test, length(states));

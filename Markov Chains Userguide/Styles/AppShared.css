@@ -1,0 +1,80 @@
+﻿/* --- All scrollbars --- */
+
+::-webkit-scrollbar {
+  background: white; /*transparent;*/
+	overflow: visible;
+	width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar:hover
+{
+  background: #EEEEEE;
+}
+
+::-webkit-scrollbar:horizontal:hover
+{
+  border-top: 1px solid #E0E0E0;
+}
+
+::-webkit-scrollbar:vertical:hover
+{
+  border-left: 1px solid #E0E0E0;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:vertical
+{
+	background-color: rgba(0, 0, 0, 0.2);
+	border: solid #fff;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.10),inset 0 -1px 0 rgba(0,0,0,0.07);
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+	background: #999;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  border-width: 0;
+	min-width: 40px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  border-width: 0;
+	min-height: 40px;
+}
+
+::-webkit-scrollbar-track-piece {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+/* --- Article viewer / editor --- */
+
+/* All the !important marks are here on purpose to override styles from 
+  PrintedDoc.css which emulate printed docs export limitations (no paddings, 
+  backgrounds and borders for some elements). Without them, custom tags will
+  not be rendered correctly in WYSIWYG view when previewing the PrintedDoc 
+  publish configuration. */
+.Article_pubConfigPreview
+{
+  color: white;
+  background-color: black;
+  border-radius: 0px 0px 5px 5px;
+  position: fixed;
+  top: 0;
+  right: 5px;
+  padding: 3px 5px !important;
+  font-size: 13px;
+  z-index: 10000;
+}
+
+.__clhImgPlaceholderDead
+{
+  background: #efefef url('/Images/Icons/invalid.png') no-repeat center center;
+  border: 1px solid #cdcdcd;
+}

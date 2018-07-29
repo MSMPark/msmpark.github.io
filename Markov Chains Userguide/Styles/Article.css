@@ -1,0 +1,96 @@
+﻿img 
+{ /* Old IE terrible resizing fix for images having non-100% width/height specified in CSS:
+    See https://css-tricks.com/snippets/css/not-terrible-image-resizing-in-ie/ */
+       -ms-interpolation-mode: bicubic;
+}
+
+.Article_disqusThread
+{
+  padding: 10px;
+}
+
+.Article_404Body
+{
+  background-color: White;
+  font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+  margin: 0px;
+  padding: 0;
+  color: #696969;
+}
+
+.Article_404Body a:link,
+.Article_404Body a:visited
+{
+  color: #009900;
+}
+
+.Article_404Body a:hover
+{
+  color: #00CC00;
+  text-decoration: none;
+}
+
+.Article_404Body a:active
+{
+  color: #007900;
+}
+
+.Article_404Image
+{  
+  padding-left: 10px;
+  margin-right: 10px;
+  float: left;
+}
+
+.Article_404ErrorText
+{
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 35px;
+  padding: 10px 20px 10px 20px;
+  background-image: url('../App_Themes/DefaultTheme/Pages/login_back.png');
+  background-color: #FFEE04;
+  border-top: 1px solid #e2c002;
+  border-bottom: 1px solid #ae9300;
+
+  -moz-box-shadow: 0px 2px 5px #CbCbCb;
+  -webkit-box-shadow: 0px 2px 5px #CbCbCb;
+  box-shadow: 0px 2px 5px #CbCbCb;
+}
+
+.Article_404Back
+{
+  overflow: hidden;
+  background-color: White;
+  background-image: url('../App_Themes/DefaultTheme/Pages/stripes.png');
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.Article_404Content
+{
+  padding: 20px;
+}
+
+.Article_404Description
+{
+  padding-left: 20px;
+  text-align: justify;
+  vertical-align: top;
+}
+
+.CHHotspot
+{
+  cursor: pointer;
+}
+
+.CHPopup
+{
+  padding: 10px;
+  max-width: 500px;
+  max-height: 400px;
+  overflow: auto;
+  background: white;
+  border: 1px solid #cdcdcd;
+}

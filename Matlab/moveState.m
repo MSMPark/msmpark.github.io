@@ -15,3 +15,4 @@ function endState = moveState(startState, P)
     %Returns the ending state.
     endState = thresh;
 end
+

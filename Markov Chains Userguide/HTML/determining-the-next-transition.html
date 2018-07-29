@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html><html><head>
+<script  type='text/javascript'>//<!--
+setInterval(function(){if (window == parent){window.location.replace('../index.html#determining-the-next-transition');}}, 200);
+//--></script><title>Determining the next transition</title><script  type='text/javascript'>//<!--
+var isArticlesNavViaMessage=true;var articleTitleText='Determining the next transition';
+//--></script><link rel='stylesheet' type='text/css' href='../Styles/markov-chain-models-publication/Style1.css'/><link rel='stylesheet' type='text/css' href='../Styles/AppShared.css'/><link rel='stylesheet' type='text/css' href='../Styles/Article.css'/><script  src='../Scripts/markov-chain-models-publication/Script1.js' type='text/javascript'></script><script  src='../Scripts/article-bundle.js' type='text/javascript'></script><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html;charset=utf-8"></head><body><p dir="ltr" style="line-height: 1.38; text-align: center;"><span title="" style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;"></span></p><div style="text-align: left; margin-left: 40px;"><img src="https://lh6.googleusercontent.com/61gyPPLqyLhUueB6p4qrMz891Hgi7IJejqukG8sbhLMs9Au1eGD9g0LSdYq8WD9pzlatNQNJeDOIAJGI6d0furOBc_R5PtpURuVN2zl7xzIHkM4yhx37yLCPqGLbot8TJiOhfWrV" title="" style="transform: rotate(0rad);" width="665" height="306"/></div><span title="" style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;"></span>
+<p></p>
+<p dir="ltr" style="line-height: 1.38;">
+  <span style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">You create a separate function to modularize the process. The code works the following way:</span>
+</p>
+<ol>
+  <li dir="ltr" style="font-size: 11pt; white-space: pre;"><span style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">Takes the current state of the system and the transition matrix.</span>
+</li>
+</ol>
+<p dir="ltr" style="line-height: 1.38;">
+  <span style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;"></span>
+</p>
+<div style="text-align: left; margin-left: 40px;">
+  <img src="https://lh5.googleusercontent.com/tIv9gmrRCjJL-CmzbH_2c-D-11ARy5H2n2YpKJVzG3c9GBbaiixhcCJWgCqA5f5VP34ouLhhajPsQf1TvWMVh0NnRyhjPP6ZB1AWIf2z3CWN2-1ef_0E3a7rYeY6Mf3HhGg0ZR30" title="" style="transform: rotate(0rad);" width="356" height="17"/>
+</div>
+<p>
+</p>
+<ol start="2">
+  <li dir="ltr" style="font-size: 11pt; white-space: pre;"><span style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">Generates a random number between 0 and 1.</span>
+</li>
+</ol>
+
+<div style="text-align: left; margin-left: 40px;">
+  <img src="https://lh3.googleusercontent.com/j1Xrdsv3dh5ERr7D7-3RJU_bFWRl2miYPpVlYF9CTTkQhHMpG654rwgGYQ3980Gcb4D74Nun3XQ-dVE0jjs9MM7x6nyfxEIuhPGDYah-x1Y1E85FOlCj5s7Qn1Eo3yBMZpGj0z5V" title="" style="transform: rotate(0rad);" width="125" height="15"/>
+</div>
+<p>
+</p>
+<ol start="3">
+  <li dir="ltr" style="font-size: 11pt; white-space: pre;"><span style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">Finds the probability of transitioning according to the current state.</span></li></ol><div style="text-align: left; margin-left: 40px;"><img src="https://lh5.googleusercontent.com/O4c_lWSfJJecCqVIy0nEqUpgege07InmtzKdA_5ZMNETfVHuQyXYKur29ToVPUpewZgLq2D6qKkUN_xPs41FobdSI58EcXICOG2cQnteF7mRe-G-Lw5QNuKC5WYrsKQFCw3-Ojqj" title="" style="transform: rotate(0rad);" width="165" height="18"/>
+</div>
+<p>
+</p>
+<p dir="ltr" style="font-size: 11pt; line-height: 1.38; margin-left: 40px;">
+  <span style="font-family: Geneva, Tahoma, Verdana, sans-serif;"><span style="font-style: italic; white-space: pre-wrap;">Note: A vector, A, is created from a column of transition matrix associated with the state.</span></span>
+</p>
+<ol start="4">
+  <li dir="ltr" style="font-size: 11pt; white-space: pre;"><span style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">Checks the number against the probabilities to determine which state the system transitions to.</span><span style="font-family: Geneva, Tahoma, Verdana, sans-serif;"><span style="white-space: pre-wrap;"></span><span style="white-space: pre-wrap;"></span></span>
+</li></ol>
+<div style="text-align: left; margin-left: 40px;">
+  <img src="https://lh4.googleusercontent.com/KwP20mvlNql3h6EyYEbESLhcfr3FI87KdZUZvaaw_9wKK7BbVIIj58kgt8CXMgUG6YfqIqcqbnqGJ417lJ2-XGaCeDWQy5sgyE3pzF3sBUcyeVjzH1TdawPK4xH4hEd0EnGc-2mA" title="" style="transform: rotate(0rad);" width="194" height="141"/><span style="font-size: 11pt; font-style: italic; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">  </span>
+</div>
+<div style="text-align: left; margin-left: 40px;">
+  <span style="font-size: 11pt; font-style: italic; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">Note: Since the probabilities of each column add up to 1, the loop shown above creates ranges associated with each transition probability. If the random number generated falls within a range, the state associated with the the range is selected.</span>
+</div>
+<p>
+</p>
+<ol start="5"><li dir="ltr" style="font-size: 11pt; white-space: pre; text-align: left;"><span style="font-size: 11pt; white-space: pre-wrap; font-family: Geneva, Tahoma, Verdana, sans-serif;">Returns the state the system will transition to.</span></li></ol><div style="text-align: left; margin-left: 40px;"><img src="https://lh6.googleusercontent.com/l2lWmiKjqyw0A1_ol4IIsJ3K8F35p1GqZO5zg-5VbKK2dSKZnpLVkKD8N03Ot7yuQ8hJCxaQ9Mah0wonuWXZDsxr0hAiRPHifjQ2jhxQBcIgU0xbDClY46DT9JSp3Zo5VjoAnA0g" title="" style="transform: rotate(0rad);" width="151" height="20"/></div>
+<p><br/></p><ol start="6"><span style="font-size: 11pt; white-space: pre-wrap;"><div style="text-align: center;">  </div>
+  </span></ol>
+<p>
+  <span style="font-family: Geneva, Tahoma, Verdana, sans-serif;">&nbsp;</span>
+</p></body></html>

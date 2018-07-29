@@ -1,0 +1,540 @@
+/* This style file has been created automatically per your request.
+
+The following pages can help you get started with CSS:
+* CSS Tutorial (http://w3schools.com/css/default.asp)
+* CSS3 Tutorial (http://w3schools.com/css3/default.asp)
+* CSS Reference (http://w3schools.com/cssref/default.asp) */
+
+body
+{
+  font-family: 'Roboto', sans-serif;
+  margin: 0px;
+  padding: 8px;  
+  color: #696969;
+  line-height: 1.5;
+}
+   
+/* Import font from Google Web Fonts */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v15/CWB0XYA8bzo0kSThX0UTuA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+.nospacing
+{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a,
+.CHHotspot
+{
+  color: #2d88e8;
+  text-decoration:none;
+}
+
+a:visited
+{
+  color: #2d88e8;
+}
+
+a:hover,
+.CHHotspot
+{
+  text-decoration: underline;
+}
+
+a:active,
+.CHHotspot
+{
+  color: #2d88e8;
+}
+
+a img
+{
+  border:0;
+}
+
+h1
+{
+  font-family: 'Helvetica Neue', arial, freesans, clean, sans-serif;
+  color: #424242;
+  font-weight: 300;
+  margin: 0;
+  padding: 10px;
+}
+
+h2
+{
+  font-family: 'Helvetica Neue', arial, freesans, clean, sans-serif;
+  text-align: left;
+  color: #292E37;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  font-size: 1.3em;
+  font-weight: 200;
+}
+
+ul
+{
+  padding-left: 40px;
+}
+
+ul li
+{
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  vertical-align: middle;
+}
+
+ol
+{
+  padding-left: 40px;
+}
+
+ol li
+{
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+/* --- Custom classes --- */
+
+.screenshot
+{
+  box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
+}
+
+.darkTextBlock
+{
+  background-color: #263238;
+  color: #ECEFF1;
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+}
+
+.darkTextBlock a
+{
+ color: #4f99e6; 
+}
+
+.darkTextBlock a:visited
+{
+  color:#4f99e6;
+}
+
+.darkTextBlock a:hover
+{
+  color:#A0CEFF;
+}
+
+.darkTextBlock h2
+{
+ color: #f9f9f9;
+}
+
+/* Start Page */
+
+.startH1
+{
+ font-size: 2.2em;
+ background: #A0CEFF;
+ padding-top:40px;
+ padding-bottom: 40px;
+ padding-left: 20px;
+}
+
+/* Footer */
+
+.footer
+{
+  margin-top: 20px;
+  background: #f2f2f2;    
+}
+
+.footerInner
+{
+  font-size: 12px;
+  padding: 8px;
+  background: #EEE;
+}
+
+/* Tables */
+
+.sampleTable
+{
+  max-width: 480px;
+}
+
+/* CHTable is the CSS class assigned to all tables by default. Use the styles below to customize the default tables appearance */
+
+/* CHTable in the light color scheme*/
+
+.CHTable th,
+.CHTable td
+{
+  border: 1px solid #baddf7;
+}
+
+.CHTable
+{
+  font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.CHTable th
+{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 8px;
+  color: #424242;
+  background: #eee;
+}
+
+.CHTable td
+{
+	padding: 8px;
+	color: #333;
+}
+
+.CHTable tr:nth-child(even)
+{
+	background: #efefef; 
+}
+
+/* CHTable in the dark color scheme*/
+
+.darkTextBlock .CHTable th,
+.darkTextBlock .CHTable td
+
+{
+  border: 1px solid #455A64;
+}
+
+.darkTextBlock .CHTable
+{
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+  background: #263238;
+}
+
+.darkTextBlock .CHTable th
+{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 8px;
+	color: #F9F9F9;
+  background: #37474F; 
+}
+
+.darkTextBlock .CHTable td
+{
+	padding: 8px;
+	color: #ECEFF1;
+}
+
+.darkTextBlock .CHTable tr:nth-child(even)
+{
+	background: #37474F;
+}
+
+/* Simple Table light */
+
+.tableSimple
+{
+  font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #A0CEFF;
+}
+
+.tableSimple th
+{
+	padding: 15px 10px 10px 10px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #424242;
+  text-align:left;
+}
+
+.tableSimple tbody
+{
+	background: transparent;
+}
+
+.tableSimple td
+{
+	padding: 10px;
+	color: #333;
+	border-top: 1px solid #A0CEFF;
+  text-align: left;
+}
+
+.tableSimple tbody tr:hover td
+{
+	background: #eee;
+}
+
+/* Simple table dark*/
+
+.darkTextBlock .tableSimple
+{
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+	border: solid 1px #43555A;
+  background: #263238;
+}
+
+.darkTextBlock .tableSimple th
+{
+	padding: 15px 10px 10px 10px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #F9F9F9;
+  background: #263238;
+  text-align:left;
+}
+
+.darkTextBlock .tableSimple td
+{
+	padding: 10px;
+	color: #ECEFF1;
+	border-top: 1px solid #43555A;
+  text-align: left;
+}
+
+.darkTextBlock .tableSimple tfoot td
+{
+	text-align:left;
+}
+
+.darkTextBlock .tableSimple tbody tr:hover td
+{
+	color: #F9F9F9;
+	background: #37474F;
+}
+
+/* Table with both rows and columns having odd/even styles light */
+
+.tableVerZebra
+{
+  font-size: 12px;
+  text-align: left;
+  border-collapse: collapse;
+  background:#eee;
+}
+
+.tableVerZebra th
+{
+  font-size: 14px;
+  font-weight: normal;
+  padding: 12px 15px;
+  color: #424242;
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
+}
+
+.tableVerZebra td
+{
+  padding: 8px 15px;
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+  color: #333;
+}
+
+.tableVerZebra tr:nth-child(odd)
+{
+  background: #A0CEFF;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
+}
+
+.tableVerZebra tfoot td
+{
+  background: #eee;
+  color: #333;
+}
+
+/* Table with both rows and columns having odd/even styles dark */
+
+.darkTextBlock .tableVerZebra
+{
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+  background: #263238;
+  border: solid 1px #43555A;
+}
+
+.darkTextBlock .tableVerZebra th
+{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 12px 15px;
+	color: #F9F9F9;
+  background:#263238;
+  border: solid 1px #43555A; 
+}
+
+.darkTextBlock .tableVerZebra td
+{
+	padding: 8px 15px;
+	color: #ECEFF1;
+  border-left: solid 1px #43555A;
+  border-right: solid 1px #43555A;
+  border-bottom: solid 1px #43555A;
+}
+
+.darkTextBlock .tableVerZebra tr:nth-child(odd)
+{
+	background: #37474F;
+}
+
+.darkTextBlock .tableVerZebra tfoot td
+{
+  background: #263238;
+  color: #F9F9F9;
+}
+
+
+/* Info Box */
+
+.infoBox
+{
+  width: 100%;
+  background-color: #eee;
+  font-size: 0.8em;  
+  color: #424242;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.infoBox p:last-child 
+{
+    margin-bottom: 0;
+}
+
+.infoBox p
+{
+    margin-top: 0;
+}
+
+.infoBoxImageCell
+{
+  background-color: #BBDEFB;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  width: 28px;  
+}
+
+.infoBoxText
+{
+  padding: 8px;
+}
+
+.warningBox
+{
+  width: 100%;
+  background-color: #eee;
+  font-size: 0.8em;  
+  color: #696969;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.warningBox p:last-child 
+{
+    margin-bottom: 0;
+}
+
+.warningBox p
+{
+    margin-top: 0;
+}
+
+.warningBoxImageCell
+{
+  background-color: #FFCDD2;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  width: 28px;  
+}
+
+.warningBoxText
+{
+  padding: 8px;
+}
+
+/* "Show More" Box */
+
+.CHBoxShowMore
+{
+}
+
+.CHBoxShowMore .showMoreLabel
+{
+}
+
+.CHBoxShowMore .hideLabel
+{
+}
+
+.CHBoxShowMore .showMoreContent
+{
+}
+
+/* Navigation elements */
+
+.CHNavLinkTop
+{
+}
+
+.CHNavLinkNext
+{
+}
+
+.CHNavLinkPrevious
+{
+}
+
+.CHSeeAlso
+{
+}
+
+.CHBreadcrumb
+{
+}
+
+/* FAQ */
+
+.faqQuestionText
+{
+  background-color: #efefef;
+  font-size: 1.1em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  border-radius: 3px;
+}
+
+.faqAnswer
+{
+  padding-left: 10px;  
+}

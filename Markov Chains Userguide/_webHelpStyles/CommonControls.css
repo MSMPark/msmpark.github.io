@@ -1,0 +1,983 @@
+﻿/* Prevents selection */
+.noselect 
+{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* --- CHTree --- */
+
+.CHTree_tree
+{
+  font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+  position: relative;
+}
+
+.CHTree_mobileView
+{
+  height: 100%;
+  overflow: auto; /*hidden;*/ /* To avoid duplicate vertical scroll when the height is very small */
+}
+
+.CHTree_disabled
+{
+  background: #CDCDCD;
+  opacity: .4;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+a.CHTree_node
+{
+  width: 100%;
+
+  clear: both;
+  cursor: default;
+
+  text-decoration: none;
+  color: #696969;
+  
+  display: table;
+  /* Renders faster and makes empty CHTree_btn have the expected width */
+  table-layout: fixed;
+
+  transition: color .2s, background-color .2s;
+  -webkit-transition: color .2s, background-color .2s;
+}
+
+.CHTree_node:hover
+{
+	background-color: #efefef; /*#e0e0e0;*/
+  color: black;
+  transition: color .2s, background-color .2s;
+  -webkit-transition: color .2s, background-color .2s;
+}
+
+a.CHTree_nodeFocused
+{
+  background-color: rgba(200,200,200,.4); /*#009900;*/
+  color: black; /* white */
+}
+
+.CHTree_nodeBack
+{
+  text-transform: uppercase;
+  background-color: #efefef;
+}
+
+.CHTree_btn
+{
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 5px;
+  width:18px;
+  font-size:14px;
+  text-align:center;
+  /* Any small value would do to avoid making nodes too high */
+  line-height: 0; 
+
+  transition: transform .2s;
+  -webkit-transition: -webkit-transform .2s;
+
+  /*margin-left: 6px;
+  margin-right: 6px;
+  width: 13px;
+  height: 13px;*/
+}
+
+.CHTree_mobileView .CHTree_btn
+{
+  padding-right: 5px;
+}
+
+.CHTree_select
+{
+  display: table-cell;
+  /*float: left;*/
+  padding-top: 4px;
+  width: 20px;
+}
+
+.CHTree_nodeBtnExpand
+{
+  /*background: url('CommonControls/chtree_sprite.png') no-repeat 0 0;*/
+  cursor: pointer;
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+}
+
+.CHTree_nodeBtnCollapse
+{
+  cursor: pointer;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+}
+
+.CHTree_nodeBtnCollapse:hover
+{
+  /*background: url('CommonControls/chtree_sprite.png') no-repeat 0 0px;*/
+}
+
+.CHTree_nodeContent
+{
+  padding: 5px;
+  padding-left: 24px;
+  display: table-cell;
+
+  word-wrap: break-word;
+  word-break: break-word; /* Non-standard, but required to avoid non-breakable long words for webkit */
+
+  background-position: 5px center;
+  background-repeat: no-repeat;  
+}
+
+.CHTree_nodeContentFaIcons
+{
+  padding-left: 5px;
+}
+
+.CHTree_mobileView .CHTree_nodeContent
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.CHTree_nodeContentDisabled
+{
+  /*color: #cdcdcd;*/
+  opacity: .5;
+  z-index: 10;
+}
+
+.CHTree_nodeChildren
+{
+  clear: both;
+  padding-left: 16px;
+  overflow: hidden;
+
+  -webkit-transition: -webkit-transform .5s, opacity .5s, box-shadow .5s;
+	-moz-transition: -moz-transform .5s, opacity .5s, box-shadow .5s;
+	transition: transform .5s, opacity .5s, box-shadow .5s;
+}
+
+.CHTree_mobileView .CHTree_nodeChildren
+{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding-left: 0;
+  overflow: auto;
+  background-color: white;
+}
+
+.CHTree_withExpandCollapseEffects .CHTree_nodeChildrenExpanded
+{
+  -webkit-transform: translate(0, 0);
+	-moz-transform: translate(0, 0);
+	transform: translate(0, 0);
+
+  /*-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);*/
+}
+
+.CHTree_desktopView .CHTree_nodeChildrenExpanded
+{    
+  opacity: 1;
+  height: 100%;
+}
+
+.CHTree_mobileView .CHTree_nodeChildrenExpanded
+{
+  box-shadow: 50px 0 100px rgba(0,0,0,.5);
+}
+
+.CHTree_nodeChildrenCollapsed
+{
+  display: none;
+}
+
+.CHTree_withExpandCollapseEffects .CHTree_nodeChildrenCollapsed
+{
+  display:block;
+
+  -webkit-transform: translate(-100%, 0);
+	-moz-transform: translate(-100%, 0);
+	transform: translate(-100%, 0);
+
+  /*-webkit-transform: translate3d(-100%, 0, 0);
+	-moz-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);*/
+}
+
+.CHTree_desktopView .CHTree_nodeChildrenCollapsed
+{  
+  opacity: 0;
+  height: 0;
+}
+
+.CHTree_mobileView div.CHTree_nodeChildrenCollapsed
+{
+  box-shadow: 0 0 100px rgba(0,0,0,0);
+}
+
+.CHTree_nodeContentExpanded {}
+
+.CHTree_nodeContentCollapsed {}
+
+.CHTree_nodeContentWithoutChildren {}
+
+.CHTree_nodeDelayLoadTrigger .CHTree_nodeContent
+{
+  cursor: pointer;
+  background-image: url('CommonControls/refresh.png');
+}
+
+.CHTree_nodeDelayLoadLoading .CHTree_nodeContent
+{
+  background-image: url('CommonControls/loader_16x16.gif');
+}
+
+/* --- CHQuestions --- */
+
+.CHQuestions_stepContainer
+{
+  padding: 10px;
+}
+
+.CHQuestions_question {}
+
+.CHQuestions_answers
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.CHQuestions_answers label
+{
+  display: block;
+}
+
+.CHQuestions_buttonsContainer {}
+
+.CHQuestions_btnNext {}
+
+/* --- CHUploader --- */
+
+.CHUploader_container 
+{
+  border: 3px dashed #CDCDCD;
+  height: 170px;
+  text-align: center;
+  transition: border-color .5s;
+  -webkit-transition: border-color .5s;
+}
+
+.CHUploader_container:hover
+{
+  border-color: #696969;
+  transition: border-color .5s;
+  -webkit-transition: border-color .5s;
+}
+
+.CHUploader_status 
+{
+  padding-top: 65px;
+}
+
+.CHUploader_progress
+{
+  height: 10px;
+  background: url('CommonControls/chuploader_loading.gif');
+  max-width: 80px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.CHUploader_defaultStatusIcon
+{
+  background: url('CommonControls/upload.png') no-repeat left center;
+  display: inline-block;
+  width: 20px; 
+  height: 13px;
+}
+
+/* Essential FileDrop zone element configuration: */
+.fd-zone {
+  position: relative;
+  overflow: hidden;
+  transition: border-color .5s, background-color .5s;
+  -webkit-transition: border-color .5s, background-color .5s;
+}
+
+/* Hides <input type="file"> while simulating "Browse" button: */
+.fd-file {
+  opacity: 0;
+  font-size: 118px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  font-family: sans-serif;
+}
+
+/* Provides visible feedback when use drags a file over the drop zone: */
+.fd-zone.over 
+{ 
+  border-color: #009900;
+  background: #ccffcc; 
+  transition: border-color .5s, background-color .5s;
+  -webkit-transition: border-color .5s, background-color .5s;
+}
+
+/* --- CHListBox --- */
+
+.CHListBox_item
+{
+  padding: 3px;
+  padding-left: 24px;
+  margin-left: 2px;
+  white-space: nowrap;
+  color: black;
+  background-position: 3px center;
+  transition: color .2s, background-color .2s;
+  -webkit-transition: color .2s, background-color .2s;
+}
+
+.CHListBox_itemSelected
+{
+  background-color: #efefef; /* #009900 */
+  /*color: white;*/
+}
+
+.CHListBox_item:hover
+{
+  cursor: pointer;
+	background-color: rgba(200,200,200,.4);
+  color: black;
+  transition: color .2s, background-color .2s;
+  -webkit-transition: color .2s, background-color .2s;
+}
+
+.CHListBox_groupName
+{
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* --- CHOffCanvasPanel --- */
+
+.CHOffCanvasPanel_container
+{
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.CHOffCanvasPanel_openMenu .CHOffCanvasPanel_content
+{
+  -webkit-transform: translate(300px, 0);
+  transform: translate(300px, 0);
+
+  /*-webkit-transform: translate3d(300px, 0, 0);
+  transform: translate3d(300px, 0, 0);*/
+}
+
+.CHOffCanvasPanel_content
+{
+  position: relative;
+  left: 0;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  /* It is recommended to set the default value for elements which will move later
+    See http://www.smashingmagazine.com/2013/01/off-canvas-navigation-for-responsive-website/ */
+  -webkit-transform: translate(0, 0);
+  transform: translate(0,0);
+  /*-webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0,0,0);*/
+}
+
+.CHOffCanvasPanel_nav
+{
+  /*display:none;*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  z-index: 10000;
+  overflow: auto;
+  background: white;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+  /*-webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);*/
+}
+
+.CHOffCanvasPanel_openMenu .CHOffCanvasPanel_nav
+{
+  /*display: block;*/
+}
+
+.CHOffCanvasPanel_openMenu .CHOffCanvasPanel_overlay
+{
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity .5s, box-shadow .5s;
+  transition: opacity .5s, box-shadow .5s;
+  box-shadow: 20px 0 20px rgba(0,0,0,.5) inset;
+}
+
+.CHOffCanvasPanel_overlay
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background: rgba(0,0,0,0.2);
+  content: '';
+  opacity: 0;
+  z-index: 60000; /* DX popups use 50K for z-index values, need to overlap them */
+  -webkit-transition: box-shadow .5s, opacity .5s, width .1s .5s, height .1s .5s;
+  transition: box-shadow .5s, opacity .5s, width .1s .5s, height .1s .5s;
+}
+
+/* Fallback for browsers not having CSS3 3D transforms. 
+  If we decide to use them, we need https://modernizr.com, which will assign the class to <html> */
+/*.no-csstransforms3d .CHOffCanvasPanel_openMenu .CHOffCanvasPanel_content
+{
+  left: 300px;
+}
+
+.no-csstransforms3d .CHOffCanvasPanel_nav
+{
+  left: -100%;
+}*/
+
+/* --- CHHamburger --- */
+
+.CHHamburger_container
+{
+  /*padding: 10px;  
+  width: 25px;*/
+  display: inline-block;
+  float: left;
+  transition: background-color .2s;
+  -webkit-transition: background-color .2s;
+
+  width: 45px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  /*font-size: 0;
+  text-indent: -9999px;*/
+  border: none;
+  cursor: pointer;
+}
+
+.CHHamburger_container:focus
+{
+  outline: 0;
+}
+
+.CHHamburger_container:hover
+{
+  background-color: rgba(200,200,200,.4);
+  transition: background-color .2s;
+  -webkit-transition: background-color .2s;
+}
+
+.CHHamburger_container span 
+{
+  display: block;
+  position: absolute;  
+  left: 10px;
+  right: 10px;
+  height: 4px;
+  background: #696969;
+  /* Top & margin-top is a trick for vertical positioning an element of knonw height:
+    https://css-tricks.com/centering-css-complete-guide/ */
+  top: 50%;
+  margin-top: -2px;
+}
+
+.CHHamburger_container span::before,
+.CHHamburger_container span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #696969;
+  content: "";
+}
+
+.CHHamburger_container span::before {
+  top: -10px;
+}
+
+.CHHamburger_container span::after {
+  bottom: -10px;
+}
+
+/**
+ * Style 3 from http://callmenick.com/post/animating-css-only-hamburger-menu-icons
+ *
+ * Hamburger to left-arrow (htla). Hamburger menu transforms to a
+ * right-pointing arrow. Usually indicates an off canvas menu sliding in from 
+ * right that will be close on re-click of the icon.
+ */
+.CHHamburger_container-htla span 
+{
+  -webkit-transition: -webkit-transform 0.3s, background-color .2s;
+          transition: transform 0.3s, background-color .2s;
+}
+
+.CHHamburger_container-htla span::before {
+  -webkit-transform-origin: top right;
+      -ms-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transition: -webkit-transform 0.3s, width 0.3s, top 0.3s, background-color .2s;
+          transition: transform 0.3s, width 0.3s, top 0.3s, background-color .2s;
+}
+
+.CHHamburger_container-htla span::after {
+  -webkit-transform-origin: bottom right;
+      -ms-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transition: -webkit-transform 0.3s, width 0.3s, bottom 0.3s, background-color .2s;
+          transition: transform 0.3s, width 0.3s, bottom 0.3s, background-color .2s;
+}
+
+/* active state, i.e. menu open */
+.CHHamburger_container-htla.isActive span,
+.CHHamburger_container-htla.isActive span::before,
+.CHHamburger_container-htla.isActive span::after
+{
+  background-color: black;
+}
+
+.CHHamburger_container-htla.isActive span 
+{
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.CHHamburger_container-htla.isActive span::before,
+.CHHamburger_container-htla.isActive span::after 
+{
+  width: 50%;
+}
+
+.CHHamburger_container-htla.isActive span::before 
+{
+  top: 0;
+  -webkit-transform: translateX(18px) translateY(2px) rotate(45deg);
+      -ms-transform: translateX(18px) translateY(2px) rotate(45deg);
+          transform: translateX(18px) translateY(2px) rotate(45deg);
+}
+
+.CHHamburger_container-htla.isActive span::after 
+{
+  bottom: 0;
+  -webkit-transform: translateX(18px) translateY(-2px) rotate(-45deg);
+      -ms-transform: translateX(18px) translateY(-2px) rotate(-45deg);
+          transform: translateX(18px) translateY(-2px) rotate(-45deg);
+}
+
+/*.CHHamburger_container:before,
+.CHHamburger_container:after
+{
+  content: "";
+  display: block;
+}
+
+.CHHamburger_container::before
+{
+  margin-bottom: 5px;
+}
+
+.CHHamburger_container::after
+{
+  margin-top: 5px;
+}*/
+
+.CHHamburger_container span::before,
+.CHHamburger_container span,
+.CHHamburger_container span::after
+{
+  display: block;
+  background-color: #696969;
+  /*transition: background-color .2s;
+  -webkit-transition: background-color .2s;*/
+}
+
+.CHHamburger_container:hover span::before,
+.CHHamburger_container:hover span,
+.CHHamburger_container:hover span::after
+{
+  background-color: black;
+  /*transition: background-color .2s;
+  -webkit-transition: background-color .2s;*/
+}
+
+/* --- CHMenu --- */
+
+.CHMenu_menu
+{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.CHMenu_menuItem a
+{
+  color: #696969;
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.CHMenu_menuItem
+{
+  cursor: pointer;
+  margin: 0;
+  float: left;
+  white-space: nowrap;  
+  transition: background-color .2s;
+  -webkit-transition: background-color .2s;
+}
+
+.CHMenu_menuItemWithImage
+{
+  background-position: 10px center;
+  padding-left: 16px;
+}
+
+.CHMenu_menuItem:hover
+{ /* Using semi-transparent color to give nice default look for transparent menus: */
+  /* rgba(200,200,200,.4) on #efefef background is close to the common #e0e0e0 color. */
+  background-color: rgba(200,200,200,.4); /*#e0e0e0;*/
+  transition: background-color .2s;
+  -webkit-transition: background-color .2s;
+}
+
+.CHMenu_menuItemSelected
+{
+  border-bottom: 3px solid #009900;
+}
+
+.CHMenu_menuItemDisabled:hover
+{
+  background-color: inherit;
+}
+
+.CHMenu_menuItemDisabled a,
+.CHMenu_menuItem.CHMenu_menuItemDisabled:hover a
+{
+  color: #cdcdcd;
+  cursor:default;
+}
+
+.CHMenu_nodeBordered
+{
+  border-top: 1px solid #CDCDCD;
+}
+
+.CHMenu_menuItem:hover a
+{
+  color: black;
+}
+
+/*.CHMenu_menuItemWithChildren a
+{
+  padding-right: 5px;
+}*/
+
+.CHMenu_popup
+{
+  max-width: 300px;
+  max-height: 480px;
+  height: auto !important;
+  overflow: auto !important;
+  box-shadow: 0 0 10px rgba(0,0,0,.4);
+  background-color: white;
+}
+
+.CHMenu_popup .CHTree_nodeContent
+{
+  line-height: normal; /* Was "initial", but it did not work in IE */
+}
+
+.CHMenu_popup .CHTree_node
+{
+  line-height: normal; /* Was "initial", but it did not work in IE */
+}
+
+/* --- mfb overriden styles --- */
+
+[data-mfb-toggle] [data-mfb-label]:after
+{ /* Make option hints black & white - easier to read */
+  background: black;
+  color: white;
+}
+
+/* Make hints visible on hover only, even if menu is invoked by clicks
+  Without this change, the labels will overlap for horizontal menu */
+.mfb-horizontal[data-mfb-state=open] [data-mfb-label]:after
+{
+  opacity: 0;
+}
+.mfb-horizontal[data-mfb-state=open] [data-mfb-label]:hover:after
+{
+  opacity: 1;
+}
+
+/* Add horizontal appearance for the button (for ZOOM-IN effect only) */
+
+[data-mfb-toggle].mfb-horizontal.mfb-component--br [data-mfb-label]:after, .mfb-component--tr [data-mfb-label]:after, 
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl [data-mfb-label]:after, .mfb-component--tl [data-mfb-label]:after,
+[data-mfb-toggle].mfb-horizontal.mfb-component--br .mfb-component__list [data-mfb-label]:after, .mfb-component--tr .mfb-component__list [data-mfb-label]:after,
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl .mfb-component__list [data-mfb-label]:after, .mfb-component--tl .mfb-component__list [data-mfb-label]:after 
+{
+  top: 70px; 
+  left: 50%;
+  right: auto;
+  margin-top: -7px;
+  transform: translate(-50%);
+}
+
+/* ZOOM-IN effect */
+
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin .mfb-component__list li:nth-child(1),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin .mfb-component__list li:nth-child(1) {
+  -webkit-transform: translateX(70px) scale(0);
+  transform: translateX(70px) scale(0); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin .mfb-component__list li:nth-child(2),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin .mfb-component__list li:nth-child(2) {
+  -webkit-transform: translateX(140px) scale(0);
+  transform: translateX(140px) scale(0); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin .mfb-component__list li:nth-child(3),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin .mfb-component__list li:nth-child(3) {
+  -webkit-transform: translateX(210px) scale(0);
+  transform: translateX(210px) scale(0); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin .mfb-component__list li:nth-child(4),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin .mfb-component__list li:nth-child(4) {
+  -webkit-transform: translateX(280px) scale(0);
+  transform: translateX(280px) scale(0);  }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(1), .mfb-component--tl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(1),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(1),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(1) {
+  -webkit-transform: translateX(70px) scale(1);
+  transform: translateX(70px) scale(1); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(2), .mfb-component--tl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(2),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(2),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(2) {
+  -webkit-transform: translateX(140px) scale(1);
+  transform: translateX(140px) scale(1); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(3), .mfb-component--tl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(3),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(3),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(3) {
+  -webkit-transform: translateX(210px) scale(1);
+  transform: translateX(210px) scale(1); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(4), .mfb-component--tl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(4),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(4),
+[data-mfb-toggle].mfb-horizontal.mfb-component--bl.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(4) {
+  -webkit-transform: translateX(280px) scale(1);
+  transform: translateX(280px) scale(1); }
+
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin .mfb-component__list li:nth-child(1),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin .mfb-component__list li:nth-child(1) {
+  -webkit-transform: translateX(-70px) scale(0);
+  transform: translateX(-70px) scale(0); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin .mfb-component__list li:nth-child(2),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin .mfb-component__list li:nth-child(2) {
+  -webkit-transform: translateX(-140px) scale(0);
+  transform: translateX(-140px) scale(0); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin .mfb-component__list li:nth-child(3),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin .mfb-component__list li:nth-child(3) {
+  -webkit-transform: translateX(-210px) scale(0);
+  transform: translateX(-210px) scale(0); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin .mfb-component__list li:nth-child(4),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin .mfb-component__list li:nth-child(4) {
+  -webkit-transform: translateX(-280px) scale(0);
+  transform: translateX(-280px) scale(0); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(1), .mfb-component--tr.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(1),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(1),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(1) {
+  -webkit-transform: translateX(-70px) scale(1);
+  transform: translateX(-70px) scale(1); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(2), .mfb-component--tr.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(2),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(2),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(2) {
+  -webkit-transform: translateX(-140px) scale(1);
+  transform: translateX(-140px) scale(1); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(3), .mfb-component--tr.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(3),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(3),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(3) {
+  -webkit-transform: translateX(-210px) scale(1);
+  transform: translateX(-210px) scale(1); }
+[data-mfb-toggle].mfb-horizontal.mfb-component--tr.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(4), .mfb-component--tr.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(4),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-toggle="hover"]:hover .mfb-component__list li:nth-child(4),
+[data-mfb-toggle].mfb-horizontal.mfb-component--br.mfb-zoomin[data-mfb-state="open"] .mfb-component__list li:nth-child(4) {
+  -webkit-transform: translateX(-280px) scale(1);
+  transform: translateX(-280px) scale(1); }
+
+/* --- CHAnimatedCheckbox --- */
+/* Based on https://codepen.io/dylanraga/pen/Qwqbab */
+
+.CHAnimatedCheckbox
+{
+  justify-content: center;
+  align-items: center;
+  font: 24px/1.4 sans-serif;
+  overflow: hidden;
+}
+
+.CHAnimatedCheckbox *
+{ 
+  box-sizing: border-box; 
+  user-select: none; 
+}
+
+.CHAnimatedCheckbox input[type='checkbox']
+{ 
+  height: 0;
+  width: 0;
+
+  position: absolute;
+  left: -10000px;
+}
+
+.CHAnimatedCheckbox input[type='checkbox'] + label{
+  position: relative;
+  display: flex;
+  /*margin: .6em 0;*/
+  align-items: center;
+  /*color: #9e9e9e;*/
+  transition: color 250ms cubic-bezier(.4,.0,.23,1);
+}
+.CHAnimatedCheckbox input[type='checkbox'] + label > ins{
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 2em;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  transition: height 300ms cubic-bezier(.4,.0,.23,1);
+}
+.CHAnimatedCheckbox input[type='checkbox'] + label > ins > i{
+  position: absolute;
+  bottom: 0;
+  left: 0; /* added */
+  font-style: normal;
+  color: #009900; /*#4FC3F7;*/
+}
+.CHAnimatedCheckbox input[type='checkbox'] + label > span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1em;
+  width: 1em;
+  height: 1em;
+  background: transparent;
+  border: 2px solid #9E9E9E;
+  border-radius: 2px;
+  cursor: pointer;  
+  transition: all 250ms cubic-bezier(.4,.0,.23,1);
+}
+
+.CHAnimatedCheckbox input[type='checkbox'] + label:hover, input[type='checkbox']:focus + label
+{
+  color: black;
+  cursor: pointer;
+}
+.CHAnimatedCheckbox input[type='checkbox'] + label:hover > span, input[type='checkbox']:focus + label > span{
+  background: rgba(255,255,255,.1);
+}
+.CHAnimatedCheckbox input[type='checkbox']:checked + label > ins{ height: 100%; }
+
+.CHAnimatedCheckbox input[type='checkbox']:checked + label > span{
+  border: .5em solid #009900; /*#FFEB3B;*/
+  animation: shrink-bounce 200ms cubic-bezier(.4,.0,.23,1);
+}
+
+.CHAnimatedCheckbox input[type='checkbox']:checked + label > span:before{
+  content: "";
+  position: absolute;
+  top: .6em;
+  left: .2em;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  transform: rotate(45deg);
+  transform-origin: 0% 100%;
+  animation: checkbox-check 125ms 250ms cubic-bezier(.4,.0,.23,1) forwards;
+}
+
+.CHAnimatedCheckboxNoText input[type='checkbox']:checked + label > span:before
+{ /* Added to fix check position when no text label is present and thus label height is smaller */
+  top: .45em;
+  left: .15em;
+}
+
+@keyframes shrink-bounce{
+  0%{
+    transform: scale(1);
+  }
+  33%{    
+    transform: scale(.85);
+  }
+  100%{
+    transform: scale(1);    
+  }
+}
+@keyframes checkbox-check{
+  0%{
+    width: 0;
+    height: 0;
+    border-color: white; /*#212121;*/
+    transform: translate3d(0,0,0) rotate(45deg);
+  }
+  33%{
+    width: .2em;
+    height: 0;
+    transform: translate3d(0,0,0) rotate(45deg);
+  }
+  100%{    
+    width: .2em;
+    height: .5em;    
+    border-color: white; /*#212121;*/
+    transform: translate3d(0,-.5em,0) rotate(45deg);
+  }
+}

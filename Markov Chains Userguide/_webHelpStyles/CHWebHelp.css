@@ -1,0 +1,497 @@
+﻿body
+{
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+  color: #696969;
+  overflow: hidden;
+}
+
+/* --- Heading Styles --- */
+
+.BaseMaster_mainMenuContainer
+{
+  background: #efefef;
+  padding: 0 10px;
+  height: 45px;  
+  line-height: 45px;
+  overflow: auto; /* For valid overflow detection used to switch CHMenu to mobile view */
+  vertical-align: middle;
+  font-size:.8em;
+}
+
+.BaseMaster_mainMenuContainer .BaseMaster_hamburgerMenuIcon
+{
+  margin-right: 10px;
+}
+
+.BaseMaster_mainMenuContainer:after
+{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.BaseMaster_imgLogo
+{
+  max-height: 35px;
+  padding-top: 5px;
+  padding-right: 10px;
+  float: left;
+}
+
+.WebHelp_searchBox
+{
+  float:right; 
+  margin-top: 12px; 
+  border: 1px solid #CDCDCD;  
+  width: 120px;
+}
+
+/* --- Panels Layout --- */
+
+.BaseMaster_contentContainer
+{
+  /*position: absolute;
+  top: 45px;
+  bottom: 0;
+  width: 100%;*/
+}
+
+.BaseMaster_offCanvasHeader
+{
+  height: 45px;
+  line-height: 40px;
+  background-color: #efefef;
+  font-size: .8em;
+}
+
+.BaseMaster_offCanvasContent
+{
+  position: absolute;
+  top: 45px;
+  overflow: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.WebHelp_navPanel
+{
+  width: 350px;
+  height: 100%;
+  float:left;
+  background: white;
+  border-right: 3px solid #efefef;
+  position: relative;
+}
+
+.WebHelp_navMenu
+{
+  margin: 0;
+  padding: 0;
+  
+  /*background-color: #efefef;*/
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 1px solid #efefef;
+}
+
+.CHOffCanvasPanel_nav .WebHelp_navMenu
+{
+  display:none;
+}
+
+.CHOffCanvasPanel_nav .WebHelp_navPanel
+{
+  width: auto;
+}
+
+.CHOffCanvasPanel_nav .WebHelp_navPanelContent
+{
+  border-top: 0 none;
+  position: static;
+  height: 100%;
+  
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.WebHelp_navMenu li
+{
+  line-height: 40px;
+}
+
+.WebHelp_navPanelContent
+{
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  width: 100%;
+}
+
+.TocTreeLight_container
+{  
+  overflow: auto;
+}
+
+/* --- Topic viewer --- */
+
+.TopicViewer_container
+{
+  /*position: relative;*/
+  background: white;
+  /*height: 100%;*/
+  overflow: hidden;
+}
+
+.TopicViewer_header
+{
+  min-height: 25px;
+  background-color: white; 
+  border-bottom: 1px solid #efefef;
+  padding: 10px;
+}
+
+.TopicViewer_headerShare
+{
+  float:right; 
+  color: #999999; 
+}
+
+/* Use the class name from the app in case Branding.css overrides the style */
+.ArticleEditor_sharingButton 
+{
+  padding: 0 4px 0 2px;
+  display: inline-block;
+  vertical-align: middle !important; /* Make sure sharing buttons and counter baloon will be on the same line */
+}
+
+.ArticleEditor_sharingButton .addthis_counter
+{
+  vertical-align: middle;
+}
+
+.ArticleEditor_projectName 
+{
+  white-space: nowrap;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 450px;
+	font-size: .8em;
+}
+
+.TopicViewer_headerText h1
+{
+  color: black;
+  display: inline;
+  /*margin: 0;*/
+  font-size: 18px;
+
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.CHImageButton
+{  
+  transition: background-color .3s, color .3s;
+  -webkit-transition: background-color .3s, color .3s;
+}
+
+.CHImageButton:hover
+{
+  background-color: #e0e0e0;
+  transition: background-color .3s, color .3s;
+  -webkit-transition: background-color .3s, color .3s;
+}
+
+.ArticleEditor_imageButton
+{
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  vertical-align:bottom;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.CHImageButton.ArticleEditor_imageButton.ArticleEditor_fontAwesomeButton
+{
+  color: #696969;
+  font-size: 20px;
+  text-align: center;
+}
+
+.CHImageButton.ArticleEditor_imageButton.ArticleEditor_fontAwesomeButton:hover
+{
+  color: black;
+}
+
+.WebHelp_containerMobile .ArticleEditor_btnPrint
+{
+  display: none;
+}
+
+.TopicViewer_frameContainer
+{
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /*position: absolute;
+  top: 46px;
+  bottom: 0;
+  width: 100%;*/
+}
+
+.TopicViewer_frame
+{
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: white;
+  padding: 0px;
+  margin: 0;
+  border-style: none;
+  border-width: 0px;
+  border-collapse: collapse;
+}
+
+/* --- TOC Styles --- */
+
+.WebHelp_navPanelContent .CHTree_tree:after
+{ /* A trick to preload images (can't use sprites due to unpredictable tree node size) */
+  display: none;
+  content: url('../_webHelpImages/folder_glyph.png') url('../_webHelpImages/folder_glyph_open.png') url('../_webHelpImages/topic.png'); /*url('../_webHelpImages/book_hover.png') url('../_webHelpImages/book_open_hover.png') url('../_webHelpImages/topic_hover.png');*/
+}
+
+.TocTreeLight_imgBook,
+.TocTree_tocTree .CHTree_node:hover .TocTreeLight_imgBook 
+{
+  background-image: url('../_webHelpImages/folder_glyph.png');
+}
+
+.TocTreeLight_imgBook_open,
+.TocTree_tocTree .CHTree_node:hover .TocTreeLight_imgBook_open 
+{
+  background-image: url('../_webHelpImages/folder_glyph_open.png');
+}
+
+.TocTreeLight_imgTopic,
+.CHTree_node:hover .TocTreeLight_imgTopic 
+{
+  background-image: url('../_webHelpImages/topic.png');
+}
+
+/* Apply "hover" sprite icons to focused node */
+/*.CHTree_nodeFocused .TocTreeLight_imgBook 
+{ 
+  background-image: url('../_webHelpImages/book_hover.png');
+}
+.CHTree_nodeFocused .TocTreeLight_imgBook_open 
+{ 
+  background-image: url('../_webHelpImages/book_open_hover.png');
+}
+.CHTree_nodeFocused .TocTreeLight_imgTopic 
+{ 
+  background-image: url('../_webHelpImages/topic_hover.png');
+}*/
+
+.CHTree_nodeFocused:hover a,
+.TocTree_tocNode a,
+.TocTree_tocNode:hover a
+/* These two styles are for nodes having custom icons */
+.CHTree_node a,
+.CHTree_node a
+{
+  text-decoration: none;
+  color: black;
+}
+
+/*.CHTree_nodeFocused a
+{
+  color: white;
+}*/
+
+div.CHTree_nodeContent
+{
+  font-size: .8em;
+  line-height: 16px;
+}
+
+/* --- Index Styles --- */
+
+.IndexViewerLight_treeNode
+{
+  color: black;
+}
+
+.IndexViewerLight_container .CHTree_nodeChildrenExpanded
+{ /* iPhone 4S browser crashes when expanding Index nodes with 2D transforms */
+  display: block;
+  -webkit-transform: none;
+	-moz-transform: none;
+	transform: none;
+}
+
+.IndexViewerLight_container .CHTree_nodeChildrenCollapsed
+{ /* iPhone 4S browser crashes when expanding Index nodes with 2D transforms */
+  display: none;
+  -webkit-transform: none;
+	-moz-transform: none;
+	transform: none;
+}
+
+.IndexViewerLight_treeNodeBtn
+{
+  display: none;
+}
+
+.IndexViewerLight_indexPopup
+{
+  display: none;
+  background: white;
+  overflow: auto;
+  font-size: .8em;
+}
+
+.IndexViewerLight_contentContainer
+{
+  position: absolute;
+  top: 34px;
+  bottom: 0;
+  width: 100%;
+  overflow: auto;
+}
+
+.IndexViewerLight_quickFilterContainer
+{
+  padding: 4px 10px 4px 4px;
+  border-bottom: 1px solid #efefef;
+}
+
+.IndexViewerLight_quickFilter
+{    
+  width: 100%;
+  border: 1px solid #cdcdcd;
+  height: 18px;
+  padding: 2px;
+}
+
+/* --- Search Styles --- */
+
+.Search_container a
+{
+  color: #009900;
+}
+
+.Search_contentContainer
+{
+  position: absolute;
+  top: 34px;
+  bottom: 0;
+  width: 100%;
+  overflow: auto;
+  font-size: .8em;
+}
+
+.Search_contentContainerInner
+{
+  padding: 10px;
+}
+
+.Search_searchBoxContainer
+{
+  padding: 4px;
+  /*border-bottom: 1px solid #efefef;*/
+  width: 100%;
+}
+
+.Search_searchBox
+{
+  width: 100%;
+  border: 1px solid #cdcdcd;
+  height: 24px; /*18px;*/
+  padding: 2px;
+}
+
+a.SearchBox_button,
+a:link.SearchBox_button
+{
+  margin-left: 12px;
+  font-size: .8em;
+  line-height: 20px;
+  text-decoration: none;
+  display:inline-block;
+  padding: 2px 7px;
+  background-color: #009900;
+  color: white;
+  /*border-radius: 3px;*/
+}
+
+a.SearchBox_button:hover
+{
+  background-color: #007900;
+}
+
+.Search_showMore
+{
+  padding-top:20px;
+  font-weight: bold;
+}
+
+/* --- IndexViewerLight --- */
+
+.IndexViewerLight_container
+{
+  position: relative;
+  height: 100%;
+}
+
+.IndexViewerLight_treeNode .CHTree_nodeContent
+{
+  /*color: black;*/
+  padding-left: 10px;
+}
+
+.CHTree_desktopView .IndexViewerLight_treeNode .CHTree_btn
+{
+  display: none;
+}
+
+.IndexViewerLight_indexPopup
+{
+  display: none;
+  background: white;
+  overflow: auto;  
+}
+
+.IndexViewerLight_indexPopup .CHListBox_item
+{
+  white-space: normal;
+  padding: 10px;
+}
+
+.IndexViewerLight_contentContainer
+{
+  position: absolute;
+  top: 34px;
+  bottom: 0;
+  width: 100%;
+  overflow: auto;
+}
+
+.IndexViewerLight_quickFilterContainer
+{
+  padding: 4px 10px 4px 4px;
+}
+
+.IndexViewerLight_quickFilter
+{    
+  width: 100%;
+  border: 1px solid #cdcdcd;
+  height: 18px;
+  padding: 2px;
+}
